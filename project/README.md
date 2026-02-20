@@ -77,12 +77,12 @@ router bgp 65001
  neighbor 10.1.1.4 peer group LEAF
  neighbor 10.1.1.4 remote-as 65104
  neighbor 10.1.1.4 description msk-l-004
- neighbor 10.1.1.5 peer group LEAF
- neighbor 10.1.1.5 remote-as 65353
- neighbor 10.1.1.5 description msk-bl-253
- neighbor 10.1.1.6 peer group LEAF
- neighbor 10.1.1.6 remote-as 65354
- neighbor 10.1.1.6 description msk-bl-254
+ neighbor 10.1.1.253 peer group LEAF
+ neighbor 10.1.1.253 remote-as 65353
+ neighbor 10.1.1.253 description msk-bl-253
+ neighbor 10.1.1.254 peer group LEAF
+ neighbor 10.1.1.254 remote-as 65354
+ neighbor 10.1.1.254 description msk-bl-254
  !
  address-family evpn
     neighbor LEAF activate
