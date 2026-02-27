@@ -1824,3 +1824,922 @@ protocol bgp msk_bl_254_adm from msk_bl_254 {
 	interface "he-4-0.401";
 }
 ```
+
+# МАРШРУТЫ
+
+```bash
+msk-l-001#sh bgp evpn route-type mac-ip
+BGP routing table information for VRF default
+Router identifier 10.1.1.1, local AS number 65101
+Route status codes: s - suppressed, * - valid, > - active, E - ECMP head, e - EC                                                                                                                                                             MP
+                    S - Stale, c - Contributing to ECMP, b - backup
+                    % - Pending BGP convergence
+Origin codes: i - IGP, e - EGP, ? - incomplete
+AS Path Attributes: Or-ID - Originator ID, C-LST - Cluster List, LL Nexthop - Li                                                                                                                                                             nk Local Nexthop
+
+          Network                Next Hop              Metric  LocPref Weight  P                                                                                                                                                             ath
+ * >     RD: 10.1.1.1:100 mac-ip 507d.4200.1300
+                                 -                     -       -       0       i
+ * >Ec   RD: 10.1.1.2:100 mac-ip 507d.4200.1301
+                                 10.1.1.2              -       100     0       6                                                                                                                                                             5001 65102 i
+ *  ec   RD: 10.1.1.2:100 mac-ip 507d.4200.1301
+                                 10.1.1.2              -       100     0       6                                                                                                                                                             5001 65102 i
+ * >Ec   RD: 10.1.1.3:100 mac-ip 507d.4200.1302
+                                 10.1.1.3              -       100     0       6                                                                                                                                                             5001 65103 i
+ *  ec   RD: 10.1.1.3:100 mac-ip 507d.4200.1302
+                                 10.1.1.3              -       100     0       6                                                                                                                                                             5001 65103 i
+ * >Ec   RD: 10.1.1.4:100 mac-ip 507d.4200.1303
+                                 10.1.1.4              -       100     0       6                                                                                                                                                             5001 65104 i
+ *  ec   RD: 10.1.1.4:100 mac-ip 507d.4200.1303
+                                 10.1.1.4              -       100     0       6                                                                                                                                                             5001 65104 i
+ * >Ec   RD: 10.1.1.253:100 mac-ip 50e4.84a0.7074
+                                 10.1.1.253            -       100     0       6                                                                                                                                                             5001 65353 i
+ *  ec   RD: 10.1.1.253:100 mac-ip 50e4.84a0.7074
+                                 10.1.1.253            -       100     0       6                                                                                                                                                             5001 65353 i
+ * >     RD: 10.1.1.1:100 mac-ip 5674.cea1.1231 10.4.10.10
+                                 -                     -       -       0       i
+ * >Ec   RD: 10.1.1.2:100 mac-ip 5674.cea1.1231 10.4.10.10
+                                 10.1.1.2              -       100     0       6                                                                                                                                                             5001 65102 i
+ *  ec   RD: 10.1.1.2:100 mac-ip 5674.cea1.1231 10.4.10.10
+                                 10.1.1.2              -       100     0       6                                                                                                                                                             5001 65102 i
+ * >Ec   RD: 10.1.1.3:100 mac-ip 5674.cea1.1231 10.4.10.10
+                                 10.1.1.3              -       100     0       6                                                                                                                                                             5001 65103 i
+ *  ec   RD: 10.1.1.3:100 mac-ip 5674.cea1.1231 10.4.10.10
+                                 10.1.1.3              -       100     0       6                                                                                                                                                             5001 65103 i
+ * >Ec   RD: 10.1.1.4:100 mac-ip 5674.cea1.1231 10.4.10.10
+                                 10.1.1.4              -       100     0       6                                                                                                                                                             5001 65104 i
+ *  ec   RD: 10.1.1.4:100 mac-ip 5674.cea1.1231 10.4.10.10
+                                 10.1.1.4              -       100     0       6                                                                                                                                                             5001 65104 i
+ * >     RD: 10.1.1.1:100 mac-ip 5674.cea1.1231 10.4.10.15
+                                 -                     -       -       0       i
+ * >Ec   RD: 10.1.1.2:100 mac-ip 5674.cea1.1231 10.4.10.15
+                                 10.1.1.2              -       100     0       6                                                                                                                                                             5001 65102 i
+ *  ec   RD: 10.1.1.2:100 mac-ip 5674.cea1.1231 10.4.10.15
+                                 10.1.1.2              -       100     0       6                                                                                                                                                             5001 65102 i
+ * >Ec   RD: 10.1.1.3:100 mac-ip 5674.cea1.1231 10.4.10.15
+                                 10.1.1.3              -       100     0       6                                                                                                                                                             5001 65103 i
+ *  ec   RD: 10.1.1.3:100 mac-ip 5674.cea1.1231 10.4.10.15
+                                 10.1.1.3              -       100     0       6                                                                                                                                                             5001 65103 i
+ * >Ec   RD: 10.1.1.4:100 mac-ip 5674.cea1.1231 10.4.10.15
+                                 10.1.1.4              -       100     0       6                                                                                                                                                             5001 65104 i
+ *  ec   RD: 10.1.1.4:100 mac-ip 5674.cea1.1231 10.4.10.15
+                                 10.1.1.4              -       100     0       6                                                                                                                                                             5001 65104 i
+msk-l-001#
+
+```
+
+```bash
+msk-l-001#sh bgp evpn route-type imet
+BGP routing table information for VRF default
+Router identifier 10.1.1.1, local AS number 65101
+Route status codes: s - suppressed, * - valid, > - active, E - ECMP head, e - ECMP
+                    S - Stale, c - Contributing to ECMP, b - backup
+                    % - Pending BGP convergence
+Origin codes: i - IGP, e - EGP, ? - incomplete
+AS Path Attributes: Or-ID - Originator ID, C-LST - Cluster List, LL Nexthop - Link Local Nexthop
+
+          Network                Next Hop              Metric  LocPref Weight  Path
+ * >     RD: 10.1.1.1:100 imet 10.1.1.1
+                                 -                     -       -       0       i
+ * >     RD: 10.1.1.1:200 imet 10.1.1.1
+                                 -                     -       -       0       i
+ * >     RD: 10.1.1.1:300 imet 10.1.1.1
+                                 -                     -       -       0       i
+ * >     RD: 10.1.1.1:400 imet 10.1.1.1
+                                 -                     -       -       0       i
+ * >Ec   RD: 10.1.1.2:100 imet 10.1.1.2
+                                 10.1.1.2              -       100     0       65001 65102 i
+ *  ec   RD: 10.1.1.2:100 imet 10.1.1.2
+                                 10.1.1.2              -       100     0       65001 65102 i
+ * >Ec   RD: 10.1.1.2:200 imet 10.1.1.2
+                                 10.1.1.2              -       100     0       65001 65102 i
+ *  ec   RD: 10.1.1.2:200 imet 10.1.1.2
+                                 10.1.1.2              -       100     0       65001 65102 i
+ * >Ec   RD: 10.1.1.2:300 imet 10.1.1.2
+                                 10.1.1.2              -       100     0       65001 65102 i
+ *  ec   RD: 10.1.1.2:300 imet 10.1.1.2
+                                 10.1.1.2              -       100     0       65001 65102 i
+ * >Ec   RD: 10.1.1.2:400 imet 10.1.1.2
+                                 10.1.1.2              -       100     0       65001 65102 i
+ *  ec   RD: 10.1.1.2:400 imet 10.1.1.2
+                                 10.1.1.2              -       100     0       65001 65102 i
+ * >Ec   RD: 10.1.1.3:100 imet 10.1.1.3
+                                 10.1.1.3              -       100     0       65001 65103 i
+ *  ec   RD: 10.1.1.3:100 imet 10.1.1.3
+                                 10.1.1.3              -       100     0       65001 65103 i
+ * >Ec   RD: 10.1.1.3:200 imet 10.1.1.3
+                                 10.1.1.3              -       100     0       65001 65103 i
+ *  ec   RD: 10.1.1.3:200 imet 10.1.1.3
+                                 10.1.1.3              -       100     0       65001 65103 i
+ * >Ec   RD: 10.1.1.3:300 imet 10.1.1.3
+                                 10.1.1.3              -       100     0       65001 65103 i
+ *  ec   RD: 10.1.1.3:300 imet 10.1.1.3
+                                 10.1.1.3              -       100     0       65001 65103 i
+ * >Ec   RD: 10.1.1.3:400 imet 10.1.1.3
+                                 10.1.1.3              -       100     0       65001 65103 i
+ *  ec   RD: 10.1.1.3:400 imet 10.1.1.3
+                                 10.1.1.3              -       100     0       65001 65103 i
+ * >Ec   RD: 10.1.1.4:100 imet 10.1.1.4
+                                 10.1.1.4              -       100     0       65001 65104 i
+ *  ec   RD: 10.1.1.4:100 imet 10.1.1.4
+                                 10.1.1.4              -       100     0       65001 65104 i
+ * >Ec   RD: 10.1.1.4:200 imet 10.1.1.4
+                                 10.1.1.4              -       100     0       65001 65104 i
+ *  ec   RD: 10.1.1.4:200 imet 10.1.1.4
+                                 10.1.1.4              -       100     0       65001 65104 i
+ * >Ec   RD: 10.1.1.4:300 imet 10.1.1.4
+                                 10.1.1.4              -       100     0       65001 65104 i
+ *  ec   RD: 10.1.1.4:300 imet 10.1.1.4
+                                 10.1.1.4              -       100     0       65001 65104 i
+ * >Ec   RD: 10.1.1.4:400 imet 10.1.1.4
+                                 10.1.1.4              -       100     0       65001 65104 i
+ *  ec   RD: 10.1.1.4:400 imet 10.1.1.4
+                                 10.1.1.4              -       100     0       65001 65104 i
+ * >Ec   RD: 10.1.1.253:100 imet 10.1.1.253
+                                 10.1.1.253            -       100     0       65001 65353 i
+ *  ec   RD: 10.1.1.253:100 imet 10.1.1.253
+                                 10.1.1.253            -       100     0       65001 65353 i
+ * >Ec   RD: 10.1.1.253:200 imet 10.1.1.253
+                                 10.1.1.253            -       100     0       65001 65353 i
+ *  ec   RD: 10.1.1.253:200 imet 10.1.1.253
+                                 10.1.1.253            -       100     0       65001 65353 i
+ * >Ec   RD: 10.1.1.253:300 imet 10.1.1.253
+                                 10.1.1.253            -       100     0       65001 65353 i
+ *  ec   RD: 10.1.1.253:300 imet 10.1.1.253
+                                 10.1.1.253            -       100     0       65001 65353 i
+ * >Ec   RD: 10.1.1.253:400 imet 10.1.1.253
+                                 10.1.1.253            -       100     0       65001 65353 i
+ *  ec   RD: 10.1.1.253:400 imet 10.1.1.253
+                                 10.1.1.253            -       100     0       65001 65353 i
+ * >Ec   RD: 10.1.1.254:100 imet 10.1.1.254
+                                 10.1.1.254            -       100     0       65001 65354 i
+ *  ec   RD: 10.1.1.254:100 imet 10.1.1.254
+                                 10.1.1.254            -       100     0       65001 65354 i
+ * >Ec   RD: 10.1.1.254:200 imet 10.1.1.254
+                                 10.1.1.254            -       100     0       65001 65354 i
+ *  ec   RD: 10.1.1.254:200 imet 10.1.1.254
+                                 10.1.1.254            -       100     0       65001 65354 i
+ * >Ec   RD: 10.1.1.254:300 imet 10.1.1.254
+                                 10.1.1.254            -       100     0       65001 65354 i
+ *  ec   RD: 10.1.1.254:300 imet 10.1.1.254
+                                 10.1.1.254            -       100     0       65001 65354 i
+ * >Ec   RD: 10.1.1.254:400 imet 10.1.1.254
+                                 10.1.1.254            -       100     0       65001 65354 i
+ *  ec   RD: 10.1.1.254:400 imet 10.1.1.254
+                                 10.1.1.254            -       100     0       65001 65354 i
+msk-l-001#
+
+```
+
+```bash
+msk-l-001#sh ip route vrf infra
+
+VRF: infra
+Codes: C - connected, S - static, K - kernel,
+       O - OSPF, IA - OSPF inter area, E1 - OSPF external type 1,
+       E2 - OSPF external type 2, N1 - OSPF NSSA external type 1,
+       N2 - OSPF NSSA external type2, B - BGP, B I - iBGP, B E - eBGP,
+       R - RIP, I L1 - IS-IS level 1, I L2 - IS-IS level 2,
+       O3 - OSPFv3, A B - BGP Aggregate, A O - OSPF Summary,
+       NG - Nexthop Group Static Route, V - VXLAN Control Service,
+       DH - DHCP client installed default route, M - Martian,
+       DP - Dynamic Policy Route, L - VRF Leaked,
+       G  - gRIBI, RC - Route Cache Route
+
+Gateway of last resort:
+ B E      0.0.0.0/0 [200/0] via VTEP 10.1.1.254 VNI 10100 router-mac 50:2c:95:46:c6:65 local-interface Vxlan1
+                            via VTEP 10.1.1.253 VNI 10100 router-mac 50:dc:f4:ab:cd:f4 local-interface Vxlan1
+
+ B E      10.0.0.0/31 [200/0] via VTEP 10.1.1.254 VNI 10100 router-mac 50:2c:95:46:c6:65 local-interface Vxlan1
+                              via VTEP 10.1.1.253 VNI 10100 router-mac 50:dc:f4:ab:cd:f4 local-interface Vxlan1
+ B E      10.0.0.2/31 [200/0] via VTEP 10.1.1.254 VNI 10100 router-mac 50:2c:95:46:c6:65 local-interface Vxlan1
+                              via VTEP 10.1.1.253 VNI 10100 router-mac 50:dc:f4:ab:cd:f4 local-interface Vxlan1
+ B E      10.0.137.0/24 [200/0] via VTEP 10.1.1.254 VNI 10100 router-mac 50:2c:95:46:c6:65 local-interface Vxlan1
+                                via VTEP 10.1.1.253 VNI 10100 router-mac 50:dc:f4:ab:cd:f4 local-interface Vxlan1
+ C        10.4.10.0/24 is directly connected, Vlan100
+ B E      10.4.11.0/29 [200/0] via VTEP 10.1.1.253 VNI 10100 router-mac 50:dc:f4:ab:cd:f4 local-interface Vxlan1
+ B E      10.4.11.8/29 [200/0] via VTEP 10.1.1.254 VNI 10100 router-mac 50:2c:95:46:c6:65 local-interface Vxlan1
+ B E      10.4.20.0/24 [200/0] via VTEP 10.1.1.254 VNI 10100 router-mac 50:2c:95:46:c6:65 local-interface Vxlan1
+ B E      10.4.21.0/29 [200/0] via VTEP 10.1.1.254 VNI 10100 router-mac 50:2c:95:46:c6:65 local-interface Vxlan1
+                               via VTEP 10.1.1.253 VNI 10100 router-mac 50:dc:f4:ab:cd:f4 local-interface Vxlan1
+ B E      10.4.21.8/29 [200/0] via VTEP 10.1.1.254 VNI 10100 router-mac 50:2c:95:46:c6:65 local-interface Vxlan1
+                               via VTEP 10.1.1.253 VNI 10100 router-mac 50:dc:f4:ab:cd:f4 local-interface Vxlan1
+ B E      10.4.30.0/24 [200/0] via VTEP 10.1.1.254 VNI 10100 router-mac 50:2c:95:46:c6:65 local-interface Vxlan1
+ B E      10.4.31.0/29 [200/0] via VTEP 10.1.1.254 VNI 10100 router-mac 50:2c:95:46:c6:65 local-interface Vxlan1
+                               via VTEP 10.1.1.253 VNI 10100 router-mac 50:dc:f4:ab:cd:f4 local-interface Vxlan1
+ B E      10.4.31.8/29 [200/0] via VTEP 10.1.1.254 VNI 10100 router-mac 50:2c:95:46:c6:65 local-interface Vxlan1
+                               via VTEP 10.1.1.253 VNI 10100 router-mac 50:dc:f4:ab:cd:f4 local-interface Vxlan1
+ B E      10.4.40.0/24 [200/0] via VTEP 10.1.1.254 VNI 10100 router-mac 50:2c:95:46:c6:65 local-interface Vxlan1
+ B E      10.4.41.0/29 [200/0] via VTEP 10.1.1.254 VNI 10100 router-mac 50:2c:95:46:c6:65 local-interface Vxlan1
+                               via VTEP 10.1.1.253 VNI 10100 router-mac 50:dc:f4:ab:cd:f4 local-interface Vxlan1
+ B E      10.4.41.8/29 [200/0] via VTEP 10.1.1.254 VNI 10100 router-mac 50:2c:95:46:c6:65 local-interface Vxlan1
+                               via VTEP 10.1.1.253 VNI 10100 router-mac 50:dc:f4:ab:cd:f4 local-interface Vxlan1
+ B E      10.30.1.253/32 [200/0] via VTEP 10.1.1.254 VNI 10100 router-mac 50:2c:95:46:c6:65 local-interface Vxlan1
+
+msk-l-001#sh ip route vrf mgmt
+
+VRF: mgmt
+Codes: C - connected, S - static, K - kernel,
+       O - OSPF, IA - OSPF inter area, E1 - OSPF external type 1,
+       E2 - OSPF external type 2, N1 - OSPF NSSA external type 1,
+       N2 - OSPF NSSA external type2, B - BGP, B I - iBGP, B E - eBGP,
+       R - RIP, I L1 - IS-IS level 1, I L2 - IS-IS level 2,
+       O3 - OSPFv3, A B - BGP Aggregate, A O - OSPF Summary,
+       NG - Nexthop Group Static Route, V - VXLAN Control Service,
+       DH - DHCP client installed default route, M - Martian,
+       DP - Dynamic Policy Route, L - VRF Leaked,
+       G  - gRIBI, RC - Route Cache Route
+
+Gateway of last resort:
+ B E      0.0.0.0/0 [200/0] via VTEP 10.1.1.254 VNI 10300 router-mac 50:2c:95:46:c6:65 local-interface Vxlan1
+                            via VTEP 10.1.1.253 VNI 10300 router-mac 50:dc:f4:ab:cd:f4 local-interface Vxlan1
+
+ B E      10.0.0.0/31 [200/0] via VTEP 10.1.1.254 VNI 10300 router-mac 50:2c:95:46:c6:65 local-interface Vxlan1
+                              via VTEP 10.1.1.253 VNI 10300 router-mac 50:dc:f4:ab:cd:f4 local-interface Vxlan1
+ B E      10.0.0.2/31 [200/0] via VTEP 10.1.1.254 VNI 10300 router-mac 50:2c:95:46:c6:65 local-interface Vxlan1
+                              via VTEP 10.1.1.253 VNI 10300 router-mac 50:dc:f4:ab:cd:f4 local-interface Vxlan1
+ B E      10.0.137.0/24 [200/0] via VTEP 10.1.1.254 VNI 10300 router-mac 50:2c:95:46:c6:65 local-interface Vxlan1
+                                via VTEP 10.1.1.253 VNI 10300 router-mac 50:dc:f4:ab:cd:f4 local-interface Vxlan1
+ B E      10.4.10.0/24 [200/0] via VTEP 10.1.1.254 VNI 10300 router-mac 50:2c:95:46:c6:65 local-interface Vxlan1
+ B E      10.4.11.0/29 [200/0] via VTEP 10.1.1.254 VNI 10300 router-mac 50:2c:95:46:c6:65 local-interface Vxlan1
+                               via VTEP 10.1.1.253 VNI 10300 router-mac 50:dc:f4:ab:cd:f4 local-interface Vxlan1
+ B E      10.4.11.8/29 [200/0] via VTEP 10.1.1.254 VNI 10300 router-mac 50:2c:95:46:c6:65 local-interface Vxlan1
+                               via VTEP 10.1.1.253 VNI 10300 router-mac 50:dc:f4:ab:cd:f4 local-interface Vxlan1
+ B E      10.4.20.0/24 [200/0] via VTEP 10.1.1.254 VNI 10300 router-mac 50:2c:95:46:c6:65 local-interface Vxlan1
+ B E      10.4.21.0/29 [200/0] via VTEP 10.1.1.254 VNI 10300 router-mac 50:2c:95:46:c6:65 local-interface Vxlan1
+                               via VTEP 10.1.1.253 VNI 10300 router-mac 50:dc:f4:ab:cd:f4 local-interface Vxlan1
+ B E      10.4.21.8/29 [200/0] via VTEP 10.1.1.254 VNI 10300 router-mac 50:2c:95:46:c6:65 local-interface Vxlan1
+                               via VTEP 10.1.1.253 VNI 10300 router-mac 50:dc:f4:ab:cd:f4 local-interface Vxlan1
+ C        10.4.30.0/24 is directly connected, Vlan300
+ B E      10.4.31.0/29 [200/0] via VTEP 10.1.1.253 VNI 10300 router-mac 50:dc:f4:ab:cd:f4 local-interface Vxlan1
+ B E      10.4.31.8/29 [200/0] via VTEP 10.1.1.254 VNI 10300 router-mac 50:2c:95:46:c6:65 local-interface Vxlan1
+ C        10.4.40.0/24 is directly connected, Vlan400
+ B E      10.4.41.0/29 [200/0] via VTEP 10.1.1.254 VNI 10300 router-mac 50:2c:95:46:c6:65 local-interface Vxlan1
+                               via VTEP 10.1.1.253 VNI 10300 router-mac 50:dc:f4:ab:cd:f4 local-interface Vxlan1
+ B E      10.4.41.8/29 [200/0] via VTEP 10.1.1.254 VNI 10300 router-mac 50:2c:95:46:c6:65 local-interface Vxlan1
+                               via VTEP 10.1.1.253 VNI 10300 router-mac 50:dc:f4:ab:cd:f4 local-interface Vxlan1
+ C        10.30.1.1/32 is directly connected, Loopback2
+ B E      10.30.1.2/32 [200/0] via VTEP 10.1.1.2 VNI 10300 router-mac 50:cc:92:fe:68:dd local-interface Vxlan1
+ B E      10.30.1.3/32 [200/0] via VTEP 10.1.1.3 VNI 10300 router-mac 50:08:d1:7a:f1:e2 local-interface Vxlan1
+ B E      10.30.1.4/32 [200/0] via VTEP 10.1.1.4 VNI 10300 router-mac 50:34:2c:2c:fd:b8 local-interface Vxlan1
+ B E      10.30.1.253/32 [200/0] via VTEP 10.1.1.253 VNI 10300 router-mac 50:dc:f4:ab:cd:f4 local-interface Vxlan1
+ B E      10.30.1.254/32 [200/0] via VTEP 10.1.1.254 VNI 10300 router-mac 50:2c:95:46:c6:65 local-interface Vxlan1
+
+msk-l-001#sh ip route vrf sec
+
+VRF: sec
+Codes: C - connected, S - static, K - kernel,
+       O - OSPF, IA - OSPF inter area, E1 - OSPF external type 1,
+       E2 - OSPF external type 2, N1 - OSPF NSSA external type 1,
+       N2 - OSPF NSSA external type2, B - BGP, B I - iBGP, B E - eBGP,
+       R - RIP, I L1 - IS-IS level 1, I L2 - IS-IS level 2,
+       O3 - OSPFv3, A B - BGP Aggregate, A O - OSPF Summary,
+       NG - Nexthop Group Static Route, V - VXLAN Control Service,
+       DH - DHCP client installed default route, M - Martian,
+       DP - Dynamic Policy Route, L - VRF Leaked,
+       G  - gRIBI, RC - Route Cache Route
+
+Gateway of last resort:
+ B E      0.0.0.0/0 [200/0] via VTEP 10.1.1.254 VNI 10200 router-mac 50:2c:95:46:c6:65 local-interface Vxlan1
+                            via VTEP 10.1.1.253 VNI 10200 router-mac 50:dc:f4:ab:cd:f4 local-interface Vxlan1
+
+ B E      10.0.0.0/31 [200/0] via VTEP 10.1.1.254 VNI 10200 router-mac 50:2c:95:46:c6:65 local-interface Vxlan1
+                              via VTEP 10.1.1.253 VNI 10200 router-mac 50:dc:f4:ab:cd:f4 local-interface Vxlan1
+ B E      10.0.0.2/31 [200/0] via VTEP 10.1.1.254 VNI 10200 router-mac 50:2c:95:46:c6:65 local-interface Vxlan1
+                              via VTEP 10.1.1.253 VNI 10200 router-mac 50:dc:f4:ab:cd:f4 local-interface Vxlan1
+ B E      10.0.137.0/24 [200/0] via VTEP 10.1.1.254 VNI 10200 router-mac 50:2c:95:46:c6:65 local-interface Vxlan1
+                                via VTEP 10.1.1.253 VNI 10200 router-mac 50:dc:f4:ab:cd:f4 local-interface Vxlan1
+ B E      10.4.10.0/24 [200/0] via VTEP 10.1.1.254 VNI 10200 router-mac 50:2c:95:46:c6:65 local-interface Vxlan1
+ B E      10.4.11.0/29 [200/0] via VTEP 10.1.1.254 VNI 10200 router-mac 50:2c:95:46:c6:65 local-interface Vxlan1
+                               via VTEP 10.1.1.253 VNI 10200 router-mac 50:dc:f4:ab:cd:f4 local-interface Vxlan1
+ B E      10.4.11.8/29 [200/0] via VTEP 10.1.1.254 VNI 10200 router-mac 50:2c:95:46:c6:65 local-interface Vxlan1
+                               via VTEP 10.1.1.253 VNI 10200 router-mac 50:dc:f4:ab:cd:f4 local-interface Vxlan1
+ C        10.4.20.0/24 is directly connected, Vlan200
+ B E      10.4.21.0/29 [200/0] via VTEP 10.1.1.253 VNI 10200 router-mac 50:dc:f4:ab:cd:f4 local-interface Vxlan1
+ B E      10.4.21.8/29 [200/0] via VTEP 10.1.1.254 VNI 10200 router-mac 50:2c:95:46:c6:65 local-interface Vxlan1
+ B E      10.4.30.0/24 [200/0] via VTEP 10.1.1.254 VNI 10200 router-mac 50:2c:95:46:c6:65 local-interface Vxlan1
+ B E      10.4.31.0/29 [200/0] via VTEP 10.1.1.254 VNI 10200 router-mac 50:2c:95:46:c6:65 local-interface Vxlan1
+                               via VTEP 10.1.1.253 VNI 10200 router-mac 50:dc:f4:ab:cd:f4 local-interface Vxlan1
+ B E      10.4.31.8/29 [200/0] via VTEP 10.1.1.254 VNI 10200 router-mac 50:2c:95:46:c6:65 local-interface Vxlan1
+                               via VTEP 10.1.1.253 VNI 10200 router-mac 50:dc:f4:ab:cd:f4 local-interface Vxlan1
+ B E      10.4.40.0/24 [200/0] via VTEP 10.1.1.254 VNI 10200 router-mac 50:2c:95:46:c6:65 local-interface Vxlan1
+ B E      10.4.41.0/29 [200/0] via VTEP 10.1.1.254 VNI 10200 router-mac 50:2c:95:46:c6:65 local-interface Vxlan1
+                               via VTEP 10.1.1.253 VNI 10200 router-mac 50:dc:f4:ab:cd:f4 local-interface Vxlan1
+ B E      10.4.41.8/29 [200/0] via VTEP 10.1.1.254 VNI 10200 router-mac 50:2c:95:46:c6:65 local-interface Vxlan1
+                               via VTEP 10.1.1.253 VNI 10200 router-mac 50:dc:f4:ab:cd:f4 local-interface Vxlan1
+ B E      10.30.1.253/32 [200/0] via VTEP 10.1.1.254 VNI 10200 router-mac 50:2c:95:46:c6:65 local-interface Vxlan1
+
+
+```
+
+
+```bash
+msk-l-001#sh bgp evpn route-type ip-prefix ?
+  A.B.C.D/E          IPv4 address prefix
+  A:B:C:D:E:F:G:H/I  IPv6 address prefix
+  ipv4               Limit address family to IPv4
+  ipv6               Limit address family to IPv6
+
+msk-l-001#sh bgp evpn route-type ip-prefix ipv4
+BGP routing table information for VRF default
+Router identifier 10.1.1.1, local AS number 65101
+Route status codes: s - suppressed, * - valid, > - active, E - ECMP head, e - ECMP
+                    S - Stale, c - Contributing to ECMP, b - backup
+                    % - Pending BGP convergence
+Origin codes: i - IGP, e - EGP, ? - incomplete
+AS Path Attributes: Or-ID - Originator ID, C-LST - Cluster List, LL Nexthop - Link Local Nexthop
+
+          Network                Next Hop              Metric  LocPref Weight  Path
+ * >Ec   RD: 65353:10100 ip-prefix 0.0.0.0/0
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ *  ec   RD: 65353:10100 ip-prefix 0.0.0.0/0
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ * >Ec   RD: 65353:10200 ip-prefix 0.0.0.0/0
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ *  ec   RD: 65353:10200 ip-prefix 0.0.0.0/0
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ * >Ec   RD: 65353:10300 ip-prefix 0.0.0.0/0
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ *  ec   RD: 65353:10300 ip-prefix 0.0.0.0/0
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ * >Ec   RD: 65353:10400 ip-prefix 0.0.0.0/0
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ *  ec   RD: 65353:10400 ip-prefix 0.0.0.0/0
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ * >Ec   RD: 65354:10100 ip-prefix 0.0.0.0/0
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ *  ec   RD: 65354:10100 ip-prefix 0.0.0.0/0
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ * >Ec   RD: 65354:10200 ip-prefix 0.0.0.0/0
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ *  ec   RD: 65354:10200 ip-prefix 0.0.0.0/0
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ * >Ec   RD: 65354:10300 ip-prefix 0.0.0.0/0
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ *  ec   RD: 65354:10300 ip-prefix 0.0.0.0/0
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ * >Ec   RD: 65354:10400 ip-prefix 0.0.0.0/0
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ *  ec   RD: 65354:10400 ip-prefix 0.0.0.0/0
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ * >Ec   RD: 65353:10100 ip-prefix 10.0.0.0/31
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ *  ec   RD: 65353:10100 ip-prefix 10.0.0.0/31
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ * >Ec   RD: 65353:10200 ip-prefix 10.0.0.0/31
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ *  ec   RD: 65353:10200 ip-prefix 10.0.0.0/31
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ * >Ec   RD: 65353:10300 ip-prefix 10.0.0.0/31
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ *  ec   RD: 65353:10300 ip-prefix 10.0.0.0/31
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ * >Ec   RD: 65353:10400 ip-prefix 10.0.0.0/31
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ *  ec   RD: 65353:10400 ip-prefix 10.0.0.0/31
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ * >Ec   RD: 65354:10100 ip-prefix 10.0.0.0/31
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ *  ec   RD: 65354:10100 ip-prefix 10.0.0.0/31
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ * >Ec   RD: 65354:10200 ip-prefix 10.0.0.0/31
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ *  ec   RD: 65354:10200 ip-prefix 10.0.0.0/31
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ * >Ec   RD: 65354:10300 ip-prefix 10.0.0.0/31
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ *  ec   RD: 65354:10300 ip-prefix 10.0.0.0/31
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ * >Ec   RD: 65354:10400 ip-prefix 10.0.0.0/31
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ *  ec   RD: 65354:10400 ip-prefix 10.0.0.0/31
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ * >Ec   RD: 65353:10100 ip-prefix 10.0.0.2/31
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ *  ec   RD: 65353:10100 ip-prefix 10.0.0.2/31
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ * >Ec   RD: 65353:10200 ip-prefix 10.0.0.2/31
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ *  ec   RD: 65353:10200 ip-prefix 10.0.0.2/31
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ * >Ec   RD: 65353:10300 ip-prefix 10.0.0.2/31
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ *  ec   RD: 65353:10300 ip-prefix 10.0.0.2/31
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ * >Ec   RD: 65353:10400 ip-prefix 10.0.0.2/31
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ *  ec   RD: 65353:10400 ip-prefix 10.0.0.2/31
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ * >Ec   RD: 65354:10100 ip-prefix 10.0.0.2/31
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ *  ec   RD: 65354:10100 ip-prefix 10.0.0.2/31
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ * >Ec   RD: 65354:10200 ip-prefix 10.0.0.2/31
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ *  ec   RD: 65354:10200 ip-prefix 10.0.0.2/31
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ * >Ec   RD: 65354:10300 ip-prefix 10.0.0.2/31
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ *  ec   RD: 65354:10300 ip-prefix 10.0.0.2/31
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ * >Ec   RD: 65354:10400 ip-prefix 10.0.0.2/31
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ *  ec   RD: 65354:10400 ip-prefix 10.0.0.2/31
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ * >Ec   RD: 65353:10100 ip-prefix 10.0.137.0/24
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ *  ec   RD: 65353:10100 ip-prefix 10.0.137.0/24
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ * >Ec   RD: 65353:10200 ip-prefix 10.0.137.0/24
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ *  ec   RD: 65353:10200 ip-prefix 10.0.137.0/24
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ * >Ec   RD: 65353:10300 ip-prefix 10.0.137.0/24
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ *  ec   RD: 65353:10300 ip-prefix 10.0.137.0/24
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ * >Ec   RD: 65353:10400 ip-prefix 10.0.137.0/24
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ *  ec   RD: 65353:10400 ip-prefix 10.0.137.0/24
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ * >Ec   RD: 65354:10100 ip-prefix 10.0.137.0/24
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ *  ec   RD: 65354:10100 ip-prefix 10.0.137.0/24
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ * >Ec   RD: 65354:10200 ip-prefix 10.0.137.0/24
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ *  ec   RD: 65354:10200 ip-prefix 10.0.137.0/24
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ * >Ec   RD: 65354:10300 ip-prefix 10.0.137.0/24
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ *  ec   RD: 65354:10300 ip-prefix 10.0.137.0/24
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ * >Ec   RD: 65354:10400 ip-prefix 10.0.137.0/24
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ *  ec   RD: 65354:10400 ip-prefix 10.0.137.0/24
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ * >     RD: 65101:10100 ip-prefix 10.4.10.0/24
+                                 -                     -       -       0       i
+ * >Ec   RD: 65102:10100 ip-prefix 10.4.10.0/24
+                                 10.1.1.2              -       100     0       65001 65102 i
+ *  ec   RD: 65102:10100 ip-prefix 10.4.10.0/24
+                                 10.1.1.2              -       100     0       65001 65102 i
+ * >Ec   RD: 65103:10100 ip-prefix 10.4.10.0/24
+                                 10.1.1.3              -       100     0       65001 65103 i
+ *  ec   RD: 65103:10100 ip-prefix 10.4.10.0/24
+                                 10.1.1.3              -       100     0       65001 65103 i
+ * >Ec   RD: 65104:10100 ip-prefix 10.4.10.0/24
+                                 10.1.1.4              -       100     0       65001 65104 i
+ *  ec   RD: 65104:10100 ip-prefix 10.4.10.0/24
+                                 10.1.1.4              -       100     0       65001 65104 i
+ * >Ec   RD: 65353:10100 ip-prefix 10.4.10.0/24
+                                 10.1.1.253            -       100     0       65001 65353 i
+ *  ec   RD: 65353:10100 ip-prefix 10.4.10.0/24
+                                 10.1.1.253            -       100     0       65001 65353 i
+ * >Ec   RD: 65354:10100 ip-prefix 10.4.10.0/24
+                                 10.1.1.254            -       100     0       65001 65354 i
+ *  ec   RD: 65354:10100 ip-prefix 10.4.10.0/24
+                                 10.1.1.254            -       100     0       65001 65354 i
+ * >Ec   RD: 65354:10200 ip-prefix 10.4.10.0/24
+                                 10.1.1.254            -       100     0       65001 65354 65100 65353 i
+ *  ec   RD: 65354:10200 ip-prefix 10.4.10.0/24
+                                 10.1.1.254            -       100     0       65001 65354 65100 65353 i
+ * >Ec   RD: 65354:10300 ip-prefix 10.4.10.0/24
+                                 10.1.1.254            -       100     0       65001 65354 65100 65353 i
+ *  ec   RD: 65354:10300 ip-prefix 10.4.10.0/24
+                                 10.1.1.254            -       100     0       65001 65354 65100 65353 i
+ * >Ec   RD: 65354:10400 ip-prefix 10.4.10.0/24
+                                 10.1.1.254            -       100     0       65001 65354 65100 65353 i
+ *  ec   RD: 65354:10400 ip-prefix 10.4.10.0/24
+                                 10.1.1.254            -       100     0       65001 65354 65100 65353 i
+ * >Ec   RD: 65353:10100 ip-prefix 10.4.11.0/29
+                                 10.1.1.253            -       100     0       65001 65353 i
+ *  ec   RD: 65353:10100 ip-prefix 10.4.11.0/29
+                                 10.1.1.253            -       100     0       65001 65353 i
+ * >Ec   RD: 65353:10200 ip-prefix 10.4.11.0/29
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ *  ec   RD: 65353:10200 ip-prefix 10.4.11.0/29
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ * >Ec   RD: 65353:10300 ip-prefix 10.4.11.0/29
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ *  ec   RD: 65353:10300 ip-prefix 10.4.11.0/29
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ * >Ec   RD: 65353:10400 ip-prefix 10.4.11.0/29
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ *  ec   RD: 65353:10400 ip-prefix 10.4.11.0/29
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ * >Ec   RD: 65354:10100 ip-prefix 10.4.11.0/29
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ *  ec   RD: 65354:10100 ip-prefix 10.4.11.0/29
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ * >Ec   RD: 65354:10200 ip-prefix 10.4.11.0/29
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ *  ec   RD: 65354:10200 ip-prefix 10.4.11.0/29
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ * >Ec   RD: 65354:10300 ip-prefix 10.4.11.0/29
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ *  ec   RD: 65354:10300 ip-prefix 10.4.11.0/29
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ * >Ec   RD: 65354:10400 ip-prefix 10.4.11.0/29
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ *  ec   RD: 65354:10400 ip-prefix 10.4.11.0/29
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ * >Ec   RD: 65353:10100 ip-prefix 10.4.11.8/29
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ *  ec   RD: 65353:10100 ip-prefix 10.4.11.8/29
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ * >Ec   RD: 65353:10200 ip-prefix 10.4.11.8/29
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ *  ec   RD: 65353:10200 ip-prefix 10.4.11.8/29
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ * >Ec   RD: 65353:10300 ip-prefix 10.4.11.8/29
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ *  ec   RD: 65353:10300 ip-prefix 10.4.11.8/29
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ * >Ec   RD: 65353:10400 ip-prefix 10.4.11.8/29
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ *  ec   RD: 65353:10400 ip-prefix 10.4.11.8/29
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ * >Ec   RD: 65354:10100 ip-prefix 10.4.11.8/29
+                                 10.1.1.254            -       100     0       65001 65354 i
+ *  ec   RD: 65354:10100 ip-prefix 10.4.11.8/29
+                                 10.1.1.254            -       100     0       65001 65354 i
+ * >Ec   RD: 65354:10200 ip-prefix 10.4.11.8/29
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ *  ec   RD: 65354:10200 ip-prefix 10.4.11.8/29
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ * >Ec   RD: 65354:10300 ip-prefix 10.4.11.8/29
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ *  ec   RD: 65354:10300 ip-prefix 10.4.11.8/29
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ * >Ec   RD: 65354:10400 ip-prefix 10.4.11.8/29
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ *  ec   RD: 65354:10400 ip-prefix 10.4.11.8/29
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ * >     RD: 65101:10200 ip-prefix 10.4.20.0/24
+                                 -                     -       -       0       i
+ * >Ec   RD: 65102:10200 ip-prefix 10.4.20.0/24
+                                 10.1.1.2              -       100     0       65001 65102 i
+ *  ec   RD: 65102:10200 ip-prefix 10.4.20.0/24
+                                 10.1.1.2              -       100     0       65001 65102 i
+ * >Ec   RD: 65103:10200 ip-prefix 10.4.20.0/24
+                                 10.1.1.3              -       100     0       65001 65103 i
+ *  ec   RD: 65103:10200 ip-prefix 10.4.20.0/24
+                                 10.1.1.3              -       100     0       65001 65103 i
+ * >Ec   RD: 65104:10200 ip-prefix 10.4.20.0/24
+                                 10.1.1.4              -       100     0       65001 65104 i
+ *  ec   RD: 65104:10200 ip-prefix 10.4.20.0/24
+                                 10.1.1.4              -       100     0       65001 65104 i
+ * >Ec   RD: 65353:10200 ip-prefix 10.4.20.0/24
+                                 10.1.1.253            -       100     0       65001 65353 i
+ *  ec   RD: 65353:10200 ip-prefix 10.4.20.0/24
+                                 10.1.1.253            -       100     0       65001 65353 i
+ * >Ec   RD: 65354:10100 ip-prefix 10.4.20.0/24
+                                 10.1.1.254            -       100     0       65001 65354 65100 65353 i
+ *  ec   RD: 65354:10100 ip-prefix 10.4.20.0/24
+                                 10.1.1.254            -       100     0       65001 65354 65100 65353 i
+ * >Ec   RD: 65354:10200 ip-prefix 10.4.20.0/24
+                                 10.1.1.254            -       100     0       65001 65354 i
+ *  ec   RD: 65354:10200 ip-prefix 10.4.20.0/24
+                                 10.1.1.254            -       100     0       65001 65354 i
+ * >Ec   RD: 65354:10300 ip-prefix 10.4.20.0/24
+                                 10.1.1.254            -       100     0       65001 65354 65100 65353 i
+ *  ec   RD: 65354:10300 ip-prefix 10.4.20.0/24
+                                 10.1.1.254            -       100     0       65001 65354 65100 65353 i
+ * >Ec   RD: 65354:10400 ip-prefix 10.4.20.0/24
+                                 10.1.1.254            -       100     0       65001 65354 65100 65353 i
+ *  ec   RD: 65354:10400 ip-prefix 10.4.20.0/24
+                                 10.1.1.254            -       100     0       65001 65354 65100 65353 i
+ * >Ec   RD: 65353:10100 ip-prefix 10.4.21.0/29
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ *  ec   RD: 65353:10100 ip-prefix 10.4.21.0/29
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ * >Ec   RD: 65353:10200 ip-prefix 10.4.21.0/29
+                                 10.1.1.253            -       100     0       65001 65353 i
+ *  ec   RD: 65353:10200 ip-prefix 10.4.21.0/29
+                                 10.1.1.253            -       100     0       65001 65353 i
+ * >Ec   RD: 65353:10300 ip-prefix 10.4.21.0/29
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ *  ec   RD: 65353:10300 ip-prefix 10.4.21.0/29
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ * >Ec   RD: 65353:10400 ip-prefix 10.4.21.0/29
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ *  ec   RD: 65353:10400 ip-prefix 10.4.21.0/29
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ * >Ec   RD: 65354:10100 ip-prefix 10.4.21.0/29
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ *  ec   RD: 65354:10100 ip-prefix 10.4.21.0/29
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ * >Ec   RD: 65354:10200 ip-prefix 10.4.21.0/29
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ *  ec   RD: 65354:10200 ip-prefix 10.4.21.0/29
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ * >Ec   RD: 65354:10300 ip-prefix 10.4.21.0/29
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ *  ec   RD: 65354:10300 ip-prefix 10.4.21.0/29
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ * >Ec   RD: 65354:10400 ip-prefix 10.4.21.0/29
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ *  ec   RD: 65354:10400 ip-prefix 10.4.21.0/29
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ * >Ec   RD: 65353:10100 ip-prefix 10.4.21.8/29
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ *  ec   RD: 65353:10100 ip-prefix 10.4.21.8/29
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ * >Ec   RD: 65353:10200 ip-prefix 10.4.21.8/29
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ *  ec   RD: 65353:10200 ip-prefix 10.4.21.8/29
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ * >Ec   RD: 65353:10300 ip-prefix 10.4.21.8/29
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ *  ec   RD: 65353:10300 ip-prefix 10.4.21.8/29
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ * >Ec   RD: 65353:10400 ip-prefix 10.4.21.8/29
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ *  ec   RD: 65353:10400 ip-prefix 10.4.21.8/29
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ * >Ec   RD: 65354:10100 ip-prefix 10.4.21.8/29
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ *  ec   RD: 65354:10100 ip-prefix 10.4.21.8/29
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ * >Ec   RD: 65354:10200 ip-prefix 10.4.21.8/29
+                                 10.1.1.254            -       100     0       65001 65354 i
+ *  ec   RD: 65354:10200 ip-prefix 10.4.21.8/29
+                                 10.1.1.254            -       100     0       65001 65354 i
+ * >Ec   RD: 65354:10300 ip-prefix 10.4.21.8/29
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ *  ec   RD: 65354:10300 ip-prefix 10.4.21.8/29
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ * >Ec   RD: 65354:10400 ip-prefix 10.4.21.8/29
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ *  ec   RD: 65354:10400 ip-prefix 10.4.21.8/29
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ * >     RD: 65101:10300 ip-prefix 10.4.30.0/24
+                                 -                     -       -       0       i
+ * >Ec   RD: 65102:10300 ip-prefix 10.4.30.0/24
+                                 10.1.1.2              -       100     0       65001 65102 i
+ *  ec   RD: 65102:10300 ip-prefix 10.4.30.0/24
+                                 10.1.1.2              -       100     0       65001 65102 i
+ * >Ec   RD: 65103:10300 ip-prefix 10.4.30.0/24
+                                 10.1.1.3              -       100     0       65001 65103 i
+ *  ec   RD: 65103:10300 ip-prefix 10.4.30.0/24
+                                 10.1.1.3              -       100     0       65001 65103 i
+ * >Ec   RD: 65104:10300 ip-prefix 10.4.30.0/24
+                                 10.1.1.4              -       100     0       65001 65104 i
+ *  ec   RD: 65104:10300 ip-prefix 10.4.30.0/24
+                                 10.1.1.4              -       100     0       65001 65104 i
+ * >Ec   RD: 65353:10300 ip-prefix 10.4.30.0/24
+                                 10.1.1.253            -       100     0       65001 65353 i
+ *  ec   RD: 65353:10300 ip-prefix 10.4.30.0/24
+                                 10.1.1.253            -       100     0       65001 65353 i
+ * >Ec   RD: 65354:10100 ip-prefix 10.4.30.0/24
+                                 10.1.1.254            -       100     0       65001 65354 65100 65353 i
+ *  ec   RD: 65354:10100 ip-prefix 10.4.30.0/24
+                                 10.1.1.254            -       100     0       65001 65354 65100 65353 i
+ * >Ec   RD: 65354:10200 ip-prefix 10.4.30.0/24
+                                 10.1.1.254            -       100     0       65001 65354 65100 65353 i
+ *  ec   RD: 65354:10200 ip-prefix 10.4.30.0/24
+                                 10.1.1.254            -       100     0       65001 65354 65100 65353 i
+ * >Ec   RD: 65354:10300 ip-prefix 10.4.30.0/24
+                                 10.1.1.254            -       100     0       65001 65354 i
+ *  ec   RD: 65354:10300 ip-prefix 10.4.30.0/24
+                                 10.1.1.254            -       100     0       65001 65354 i
+ * >Ec   RD: 65354:10400 ip-prefix 10.4.30.0/24
+                                 10.1.1.254            -       100     0       65001 65354 65100 65353 i
+ *  ec   RD: 65354:10400 ip-prefix 10.4.30.0/24
+                                 10.1.1.254            -       100     0       65001 65354 65100 65353 i
+ * >Ec   RD: 65353:10100 ip-prefix 10.4.31.0/29
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ *  ec   RD: 65353:10100 ip-prefix 10.4.31.0/29
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ * >Ec   RD: 65353:10200 ip-prefix 10.4.31.0/29
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ *  ec   RD: 65353:10200 ip-prefix 10.4.31.0/29
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ * >Ec   RD: 65353:10300 ip-prefix 10.4.31.0/29
+                                 10.1.1.253            -       100     0       65001 65353 i
+ *  ec   RD: 65353:10300 ip-prefix 10.4.31.0/29
+                                 10.1.1.253            -       100     0       65001 65353 i
+ * >Ec   RD: 65353:10400 ip-prefix 10.4.31.0/29
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ *  ec   RD: 65353:10400 ip-prefix 10.4.31.0/29
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ * >Ec   RD: 65354:10100 ip-prefix 10.4.31.0/29
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ *  ec   RD: 65354:10100 ip-prefix 10.4.31.0/29
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ * >Ec   RD: 65354:10200 ip-prefix 10.4.31.0/29
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ *  ec   RD: 65354:10200 ip-prefix 10.4.31.0/29
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ * >Ec   RD: 65354:10300 ip-prefix 10.4.31.0/29
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ *  ec   RD: 65354:10300 ip-prefix 10.4.31.0/29
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ * >Ec   RD: 65354:10400 ip-prefix 10.4.31.0/29
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ *  ec   RD: 65354:10400 ip-prefix 10.4.31.0/29
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ * >Ec   RD: 65353:10100 ip-prefix 10.4.31.8/29
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ *  ec   RD: 65353:10100 ip-prefix 10.4.31.8/29
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ * >Ec   RD: 65353:10200 ip-prefix 10.4.31.8/29
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ *  ec   RD: 65353:10200 ip-prefix 10.4.31.8/29
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ * >Ec   RD: 65353:10300 ip-prefix 10.4.31.8/29
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ *  ec   RD: 65353:10300 ip-prefix 10.4.31.8/29
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ * >Ec   RD: 65353:10400 ip-prefix 10.4.31.8/29
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ *  ec   RD: 65353:10400 ip-prefix 10.4.31.8/29
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ * >Ec   RD: 65354:10100 ip-prefix 10.4.31.8/29
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ *  ec   RD: 65354:10100 ip-prefix 10.4.31.8/29
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ * >Ec   RD: 65354:10200 ip-prefix 10.4.31.8/29
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ *  ec   RD: 65354:10200 ip-prefix 10.4.31.8/29
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ * >Ec   RD: 65354:10300 ip-prefix 10.4.31.8/29
+                                 10.1.1.254            -       100     0       65001 65354 i
+ *  ec   RD: 65354:10300 ip-prefix 10.4.31.8/29
+                                 10.1.1.254            -       100     0       65001 65354 i
+ * >Ec   RD: 65354:10400 ip-prefix 10.4.31.8/29
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ *  ec   RD: 65354:10400 ip-prefix 10.4.31.8/29
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ * >     RD: 65101:10300 ip-prefix 10.4.40.0/24
+                                 -                     -       -       0       i
+ * >Ec   RD: 65102:10300 ip-prefix 10.4.40.0/24
+                                 10.1.1.2              -       100     0       65001 65102 i
+ *  ec   RD: 65102:10300 ip-prefix 10.4.40.0/24
+                                 10.1.1.2              -       100     0       65001 65102 i
+ * >Ec   RD: 65103:10300 ip-prefix 10.4.40.0/24
+                                 10.1.1.3              -       100     0       65001 65103 i
+ *  ec   RD: 65103:10300 ip-prefix 10.4.40.0/24
+                                 10.1.1.3              -       100     0       65001 65103 i
+ * >Ec   RD: 65104:10300 ip-prefix 10.4.40.0/24
+                                 10.1.1.4              -       100     0       65001 65104 i
+ *  ec   RD: 65104:10300 ip-prefix 10.4.40.0/24
+                                 10.1.1.4              -       100     0       65001 65104 i
+ * >Ec   RD: 65353:10400 ip-prefix 10.4.40.0/24
+                                 10.1.1.253            -       100     0       65001 65353 i
+ *  ec   RD: 65353:10400 ip-prefix 10.4.40.0/24
+                                 10.1.1.253            -       100     0       65001 65353 i
+ * >Ec   RD: 65354:10100 ip-prefix 10.4.40.0/24
+                                 10.1.1.254            -       100     0       65001 65354 65100 65353 i
+ *  ec   RD: 65354:10100 ip-prefix 10.4.40.0/24
+                                 10.1.1.254            -       100     0       65001 65354 65100 65353 i
+ * >Ec   RD: 65354:10200 ip-prefix 10.4.40.0/24
+                                 10.1.1.254            -       100     0       65001 65354 65100 65353 i
+ *  ec   RD: 65354:10200 ip-prefix 10.4.40.0/24
+                                 10.1.1.254            -       100     0       65001 65354 65100 65353 i
+ * >Ec   RD: 65354:10300 ip-prefix 10.4.40.0/24
+                                 10.1.1.254            -       100     0       65001 65354 65100 65353 i
+ *  ec   RD: 65354:10300 ip-prefix 10.4.40.0/24
+                                 10.1.1.254            -       100     0       65001 65354 65100 65353 i
+ * >Ec   RD: 65354:10400 ip-prefix 10.4.40.0/24
+                                 10.1.1.254            -       100     0       65001 65354 i
+ *  ec   RD: 65354:10400 ip-prefix 10.4.40.0/24
+                                 10.1.1.254            -       100     0       65001 65354 i
+ * >Ec   RD: 65353:10100 ip-prefix 10.4.41.0/29
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ *  ec   RD: 65353:10100 ip-prefix 10.4.41.0/29
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ * >Ec   RD: 65353:10200 ip-prefix 10.4.41.0/29
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ *  ec   RD: 65353:10200 ip-prefix 10.4.41.0/29
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ * >Ec   RD: 65353:10300 ip-prefix 10.4.41.0/29
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ *  ec   RD: 65353:10300 ip-prefix 10.4.41.0/29
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ * >Ec   RD: 65353:10400 ip-prefix 10.4.41.0/29
+                                 10.1.1.253            -       100     0       65001 65353 i
+ *  ec   RD: 65353:10400 ip-prefix 10.4.41.0/29
+                                 10.1.1.253            -       100     0       65001 65353 i
+ * >Ec   RD: 65354:10100 ip-prefix 10.4.41.0/29
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ *  ec   RD: 65354:10100 ip-prefix 10.4.41.0/29
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ * >Ec   RD: 65354:10200 ip-prefix 10.4.41.0/29
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ *  ec   RD: 65354:10200 ip-prefix 10.4.41.0/29
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ * >Ec   RD: 65354:10300 ip-prefix 10.4.41.0/29
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ *  ec   RD: 65354:10300 ip-prefix 10.4.41.0/29
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ * >Ec   RD: 65354:10400 ip-prefix 10.4.41.0/29
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ *  ec   RD: 65354:10400 ip-prefix 10.4.41.0/29
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ * >Ec   RD: 65353:10100 ip-prefix 10.4.41.8/29
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ *  ec   RD: 65353:10100 ip-prefix 10.4.41.8/29
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ * >Ec   RD: 65353:10200 ip-prefix 10.4.41.8/29
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ *  ec   RD: 65353:10200 ip-prefix 10.4.41.8/29
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ * >Ec   RD: 65353:10300 ip-prefix 10.4.41.8/29
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ *  ec   RD: 65353:10300 ip-prefix 10.4.41.8/29
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ * >Ec   RD: 65353:10400 ip-prefix 10.4.41.8/29
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ *  ec   RD: 65353:10400 ip-prefix 10.4.41.8/29
+                                 10.1.1.253            -       100     0       65001 65353 65100 i
+ * >Ec   RD: 65354:10100 ip-prefix 10.4.41.8/29
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ *  ec   RD: 65354:10100 ip-prefix 10.4.41.8/29
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ * >Ec   RD: 65354:10200 ip-prefix 10.4.41.8/29
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ *  ec   RD: 65354:10200 ip-prefix 10.4.41.8/29
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ * >Ec   RD: 65354:10300 ip-prefix 10.4.41.8/29
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ *  ec   RD: 65354:10300 ip-prefix 10.4.41.8/29
+                                 10.1.1.254            -       100     0       65001 65354 65100 i
+ * >Ec   RD: 65354:10400 ip-prefix 10.4.41.8/29
+                                 10.1.1.254            -       100     0       65001 65354 i
+ *  ec   RD: 65354:10400 ip-prefix 10.4.41.8/29
+                                 10.1.1.254            -       100     0       65001 65354 i
+ * >     RD: 65101:10300 ip-prefix 10.30.1.1/32
+                                 -                     -       -       0       i
+ * >Ec   RD: 65102:10300 ip-prefix 10.30.1.2/32
+                                 10.1.1.2              -       100     0       65001 65102 i
+ *  ec   RD: 65102:10300 ip-prefix 10.30.1.2/32
+                                 10.1.1.2              -       100     0       65001 65102 i
+ * >Ec   RD: 65103:10300 ip-prefix 10.30.1.3/32
+                                 10.1.1.3              -       100     0       65001 65103 i
+ *  ec   RD: 65103:10300 ip-prefix 10.30.1.3/32
+                                 10.1.1.3              -       100     0       65001 65103 i
+ * >Ec   RD: 65104:10300 ip-prefix 10.30.1.4/32
+                                 10.1.1.4              -       100     0       65001 65104 i
+ *  ec   RD: 65104:10300 ip-prefix 10.30.1.4/32
+                                 10.1.1.4              -       100     0       65001 65104 i
+ * >Ec   RD: 65353:10300 ip-prefix 10.30.1.253/32
+                                 10.1.1.253            -       100     0       65001 65353 i
+ *  ec   RD: 65353:10300 ip-prefix 10.30.1.253/32
+                                 10.1.1.253            -       100     0       65001 65353 i
+ * >Ec   RD: 65354:10100 ip-prefix 10.30.1.253/32
+                                 10.1.1.254            -       100     0       65001 65354 65100 65353 i
+ *  ec   RD: 65354:10100 ip-prefix 10.30.1.253/32
+                                 10.1.1.254            -       100     0       65001 65354 65100 65353 i
+ * >Ec   RD: 65354:10200 ip-prefix 10.30.1.253/32
+                                 10.1.1.254            -       100     0       65001 65354 65100 65353 i
+ *  ec   RD: 65354:10200 ip-prefix 10.30.1.253/32
+                                 10.1.1.254            -       100     0       65001 65354 65100 65353 i
+ * >Ec   RD: 65354:10300 ip-prefix 10.30.1.253/32
+                                 10.1.1.254            -       100     0       65001 65354 65100 65353 i
+ *  ec   RD: 65354:10300 ip-prefix 10.30.1.253/32
+                                 10.1.1.254            -       100     0       65001 65354 65100 65353 i
+ * >Ec   RD: 65354:10400 ip-prefix 10.30.1.253/32
+                                 10.1.1.254            -       100     0       65001 65354 65100 65353 i
+ *  ec   RD: 65354:10400 ip-prefix 10.30.1.253/32
+                                 10.1.1.254            -       100     0       65001 65354 65100 65353 i
+ * >Ec   RD: 65354:10300 ip-prefix 10.30.1.254/32
+                                 10.1.1.254            -       100     0       65001 65354 i
+ *  ec   RD: 65354:10300 ip-prefix 10.30.1.254/32
+                                 10.1.1.254            -       100     0       65001 65354 i
+msk-l-001#
+
+```
+
+
+```bash
+msk-l-001#sh bgp evpn route-type ethernet-segment
+BGP routing table information for VRF default
+Router identifier 10.1.1.1, local AS number 65101
+Route status codes: s - suppressed, * - valid, > - active, E - ECMP head, e - ECMP
+                    S - Stale, c - Contributing to ECMP, b - backup
+                    % - Pending BGP convergence
+Origin codes: i - IGP, e - EGP, ? - incomplete
+AS Path Attributes: Or-ID - Originator ID, C-LST - Cluster List, LL Nexthop - Link Local Nexthop
+
+          Network                Next Hop              Metric  LocPref Weight  Path
+ * >     RD: 10.1.1.1:1 ethernet-segment 0000:0000:0000:0000:0001 10.1.1.1
+                                 -                     -       -       0       i
+ * >Ec   RD: 10.1.1.2:1 ethernet-segment 0000:0000:0000:0000:0001 10.1.1.2
+                                 10.1.1.2              -       100     0       65001 65102 i
+ *  ec   RD: 10.1.1.2:1 ethernet-segment 0000:0000:0000:0000:0001 10.1.1.2
+                                 10.1.1.2              -       100     0       65001 65102 i
+ * >Ec   RD: 10.1.1.3:1 ethernet-segment 0000:0000:0000:0000:0001 10.1.1.3
+                                 10.1.1.3              -       100     0       65001 65103 i
+ *  ec   RD: 10.1.1.3:1 ethernet-segment 0000:0000:0000:0000:0001 10.1.1.3
+                                 10.1.1.3              -       100     0       65001 65103 i
+ * >Ec   RD: 10.1.1.4:1 ethernet-segment 0000:0000:0000:0000:0001 10.1.1.4
+                                 10.1.1.4              -       100     0       65001 65104 i
+ *  ec   RD: 10.1.1.4:1 ethernet-segment 0000:0000:0000:0000:0001 10.1.1.4
+                                 10.1.1.4              -       100     0       65001 65104 i
+ * >     RD: 10.1.1.1:1 ethernet-segment 0000:0000:0000:0000:0002 10.1.1.1
+                                 -                     -       -       0       i
+msk-l-001#
+
+```
