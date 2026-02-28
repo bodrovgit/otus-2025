@@ -1,4 +1,88 @@
-# Первые наработки
+[Назад, к списку домашних заданий](../README.md)
+## 1. План работ.  
+1. Разработать и сдать...  
+
+## 2. Схема топологии CLOS.  
+тут должна быть схема  
+
+## 3. Адресное пространство  
+<details>
+  <summary>Underlay для COD Moscow</summary>
+
+### Таблица 1. Адресное пространство.  
+|Адресация|Назначение|
+|--------|--------|
+|10.0.1.**\<SN\>**/32|loopback интерфейсы для spine, где SN = 1-255|
+|10.1.1.**\<LN\>**/32|loopback интерфейсы для leaf, где LN = 1-255|
+|10.2.**\<SN\>**.**\<N\>**/31|p2p линки между spine и leaf, где SN = номер spine, N = 0-255|
+|10.4.10.0/24|Overlay - vlan 100, vrf srv-10, gw 10.4.10.1|
+|10.4.20.0/24|Overlay - vlan 200, vrf srv-20, gw 10.4.20.1|
+|10.100.0.0/16|Внешние сети, firewall|
+</details>
+
+<details>
+  <summary>Underlay для COD Taganrog</summary>
+
+### Таблица 2. Адресное пространство.  
+|Адресация|Назначение|
+|--------|--------|
+|10.0.1.**\<SN\>**/32|loopback интерфейсы для spine, где SN = 1-255|
+|10.1.1.**\<LN\>**/32|loopback интерфейсы для leaf, где LN = 1-255|
+|10.2.**\<SN\>**.**\<N\>**/31|p2p линки между spine и leaf, где SN = номер spine, N = 0-255|
+|10.4.10.0/24|Overlay - vlan 100, vrf srv-10, gw 10.4.10.1|
+|10.4.20.0/24|Overlay - vlan 200, vrf srv-20, gw 10.4.20.1|
+|10.100.0.0/16|Внешние сети, firewall|
+</details>
+
+<details>
+  <summary>Overlay для COD Moscow</summary>
+
+### Таблица 3. Адресное пространство.  
+|Адресация|Назначение|
+|--------|--------|
+|10.0.1.**\<SN\>**/32|loopback интерфейсы для spine, где SN = 1-255|
+|10.1.1.**\<LN\>**/32|loopback интерфейсы для leaf, где LN = 1-255|
+|10.2.**\<SN\>**.**\<N\>**/31|p2p линки между spine и leaf, где SN = номер spine, N = 0-255|
+|10.4.10.0/24|Overlay - vlan 100, vrf srv-10, gw 10.4.10.1|
+|10.4.20.0/24|Overlay - vlan 200, vrf srv-20, gw 10.4.20.1|
+|10.100.0.0/16|Внешние сети, firewall|
+</details>
+
+<details>
+  <summary>Overlay для COD Taganrog</summary>
+  
+### Таблица 4. Адресное пространство.  
+|Адресация|Назначение|
+|--------|--------|
+|10.0.1.**\<SN\>**/32|loopback интерфейсы для spine, где SN = 1-255|
+|10.1.1.**\<LN\>**/32|loopback интерфейсы для leaf, где LN = 1-255|
+|10.2.**\<SN\>**.**\<N\>**/31|p2p линки между spine и leaf, где SN = номер spine, N = 0-255|
+|10.4.10.0/24|Overlay - vlan 100, vrf srv-10, gw 10.4.10.1|
+|10.4.20.0/24|Overlay - vlan 200, vrf srv-20, gw 10.4.20.1|
+|10.100.0.0/16|Внешние сети, firewall|
+</details>
+
+<details>
+  <summary>Таблица 5. Номера автономных систем (AS).</summary>
+
+
+
+### Таблица 5. Номера автономных систем (AS).  
+|Имя коммутатора|AS|комментарий|
+|--------|--------|--------|
+|spine1|65001||
+|spine2|65001||
+|fw|65100||
+|leaf1|65101||
+|leaf2|65102||
+|leaf3|65103||
+|leafN|65XXX|**\<где XXX = 100 + N\>**|
+</details>
+
+## 4. Настройки сетевого оборудования.  
+<details>
+  <summary>msk-sp-01 configuration</summary>
+  
 ```msk-sp-01
 
 msk-sp-01#sh run
@@ -115,10 +199,11 @@ router ospf 1
 !
 end
 msk-sp-01#
-
-
 ```
-
+</details>
+<details>
+  <summary>msk-sp-02 configuration</summary>
+  
 ```bash
 
 msk-sp-02#sh run
@@ -237,7 +322,9 @@ end
 msk-sp-02#
 
 ```
-
+</details>
+<details>
+  <summary>msk-l-001 configuration</summary>
 
 ```bash
 
@@ -470,7 +557,9 @@ end
 msk-l-001#
 
 ```
-
+</details>
+<details>
+  <summary>msk-l-002 configuration</summary>
 
 ```bash
 
@@ -702,7 +791,9 @@ end
 msk-l-002#
 
 ```
-
+</details>
+<details>
+  <summary>msk-l-003 configuration</summary>
 
 ```bash
 
@@ -931,10 +1022,10 @@ router ospf 1
 !
 end
 msk-l-003#
-
-
 ```
-
+</details>
+<details>
+  <summary>msk-l-004 configuration</summary>
 
 ```bash
 
@@ -1158,8 +1249,10 @@ router ospf 1
 !
 end
 msk-l-004#
-
 ```
+</details>
+<details>
+  <summary>msk-l-253 configuration</summary>
 
 ```bash
 msk-l-253#sh run
@@ -1424,7 +1517,9 @@ end
 msk-l-253#
 
 ```
-
+</details>
+<details>
+  <summary>msk-l-254 configuration</summary>
 
 ```bash
 msk-l-254#sh run
@@ -1689,13 +1784,12 @@ router ospf 1
 !
 end
 msk-l-254#
-
 ```
-
-BIRDC на Кластере континента
+</details>
+<details>
+  <summary>cl-ngfw-01 configuration (Bird)</summary>
 
 ```bash
-
 router id 10.4.11.1;
 
 protocol device {
@@ -1824,8 +1918,12 @@ protocol bgp msk_bl_254_adm from msk_bl_254 {
 	interface "he-4-0.401";
 }
 ```
+</details>
 
-# МАРШРУТЫ
+
+# 6. Проверка сетевой связности.
+<details>
+	<summary>msk-l-001#sh bgp evpn route-type mac-ip</summary>
 
 ```bash
 msk-l-001#sh bgp evpn route-type mac-ip
@@ -1887,7 +1985,10 @@ AS Path Attributes: Or-ID - Originator ID, C-LST - Cluster List, LL Nexthop - Li
 msk-l-001#
 
 ```
-
+</details>
+<details>
+	<summary>msk-l-001#sh bgp evpn route-type imet</summary>
+	
 ```bash
 msk-l-001#sh bgp evpn route-type imet
 BGP routing table information for VRF default
@@ -1990,7 +2091,10 @@ AS Path Attributes: Or-ID - Originator ID, C-LST - Cluster List, LL Nexthop - Li
 msk-l-001#
 
 ```
-
+</details>
+<details>
+	<summary>msk-l-001#sh ip route vrf infra</summary>
+	
 ```bash
 msk-l-001#sh ip route vrf infra
 
@@ -2035,7 +2139,12 @@ Gateway of last resort:
  B E      10.4.41.8/29 [200/0] via VTEP 10.1.1.254 VNI 10100 router-mac 50:2c:95:46:c6:65 local-interface Vxlan1
                                via VTEP 10.1.1.253 VNI 10100 router-mac 50:dc:f4:ab:cd:f4 local-interface Vxlan1
  B E      10.30.1.253/32 [200/0] via VTEP 10.1.1.254 VNI 10100 router-mac 50:2c:95:46:c6:65 local-interface Vxlan1
+```
+</details>
+<details>
+	<summary>msk-l-001#sh ip route vrf mgmt</summary>
 
+```bash
 msk-l-001#sh ip route vrf mgmt
 
 VRF: mgmt
@@ -2084,7 +2193,12 @@ Gateway of last resort:
  B E      10.30.1.4/32 [200/0] via VTEP 10.1.1.4 VNI 10300 router-mac 50:34:2c:2c:fd:b8 local-interface Vxlan1
  B E      10.30.1.253/32 [200/0] via VTEP 10.1.1.253 VNI 10300 router-mac 50:dc:f4:ab:cd:f4 local-interface Vxlan1
  B E      10.30.1.254/32 [200/0] via VTEP 10.1.1.254 VNI 10300 router-mac 50:2c:95:46:c6:65 local-interface Vxlan1
-
+```
+</details>
+<details>
+	<summary>msk-l-001#sh ip route vrf sec</summary>
+	
+```bash
 msk-l-001#sh ip route vrf sec
 
 VRF: sec
@@ -2131,15 +2245,11 @@ Gateway of last resort:
 
 
 ```
-
-
+</details>
+<details>
+	<summary>msk-l-001#sh bgp evpn route-type ip-prefix ipv4</summary>
+	
 ```bash
-msk-l-001#sh bgp evpn route-type ip-prefix ?
-  A.B.C.D/E          IPv4 address prefix
-  A:B:C:D:E:F:G:H/I  IPv6 address prefix
-  ipv4               Limit address family to IPv4
-  ipv6               Limit address family to IPv6
-
 msk-l-001#sh bgp evpn route-type ip-prefix ipv4
 BGP routing table information for VRF default
 Router identifier 10.1.1.1, local AS number 65101
@@ -2709,9 +2819,10 @@ AS Path Attributes: Or-ID - Originator ID, C-LST - Cluster List, LL Nexthop - Li
  *  ec   RD: 65354:10300 ip-prefix 10.30.1.254/32
                                  10.1.1.254            -       100     0       65001 65354 i
 msk-l-001#
-
 ```
-
+</details>
+<details>
+	<summary>msk-l-001#sh bgp evpn route-type ethernet-segment</summary>
 
 ```bash
 msk-l-001#sh bgp evpn route-type ethernet-segment
@@ -2743,3 +2854,6 @@ AS Path Attributes: Or-ID - Originator ID, C-LST - Cluster List, LL Nexthop - Li
 msk-l-001#
 
 ```
+</details>
+
+[Назад, к списку домашних заданий](../README.md)
