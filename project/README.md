@@ -2726,19 +2726,19 @@ C:\Users\administrator\Desktop>ping 10.4.32.10
 <details>
 	<summary>Проверка доступа в Интернет с NAT по ssh из overlay Moscow</summary>
 	
-	![ДЗ №8 L1](images/9-ssh.png)
+![ДЗ №8 L1](images/9-ssh.png)
 </details>
 
 <details>
 	<summary>Проверка bfd на vs-ngfw-04</summary>
 	
-	![ДЗ №8 L1](images/11-bfd-vs-ngfw-04.png)
+![ДЗ №8 L1](images/11-bfd-vs-ngfw-04.png)
 </details>
 
 <details>
 	<summary>Проверка bgp на vs-ngfw-04</summary>
 	
-	![ДЗ №8 L1](images/12-protocols-vs-ngfw-04.png)
+![ДЗ №8 L1](images/12-protocols-vs-ngfw-04.png)
 </details>
 
 <details>
