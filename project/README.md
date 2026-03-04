@@ -2017,11 +2017,29 @@ protocol bgp internet_vs_ngfw_04 {
 ```
 </details>
 <details>
-  <summary>cl-ngfw-01 configuration (Interfaces)</summary>
+  <summary>cl-ngfw-01 configuration bfd bgp on interfaces</summary>
 
-... картинки
+![ДЗ №8 L1](images/5-cl-ngfw-01-interfaces-bfd-bgp.png)
+
 
 </details>
+
+<details>
+  <summary>cl-ngfw-01 <> vs-ngfw-04 IPSEC configuration</summary>
+
+![ДЗ №8 L1](images/6-ipsec-vpn-1.png)
+![ДЗ №8 L1](images/7-ipsec-vpn-2.png)
+
+
+</details>
+<details>
+  <summary>Конфигурация NAT</summary>
+
+![ДЗ №8 L1](images/8-nat.png)
+
+
+</details>
+
 
 ## 4. Настройки сетевого оборудования ЦОД Taganrog
 <details>
@@ -2635,117 +2653,33 @@ protocol bgp internet_vs_ngfw_04 {
         };
 ```
 </details>
-<details>
-  <summary>nd-ngfw-04 configuration (Interfaces)</summary>
 
-картинки
+# 6. Проверка сетевой связности визуальная.
+![ДЗ №8 L1](images/13-project-test.gif)
+
+# 7. Проверка сетевой связности на оборудовании.
+<details>
+	<summary>Проверка доступа в Интернет с NAT по ssh из overlay Moscow</summary>
+	
+	![ДЗ №8 L1](images/9-ssh.png)
 </details>
 
+<details>
+	<summary>Проверка bfd на vs-ngfw-04</summary>
+	
+	![ДЗ №8 L1](images/11-bfd-vs-ngfw-04.png)
+</details>
 
-# 6. Проверка сетевой связности.
+<details>
+	<summary>Проверка bgp на vs-ngfw-04</summary>
+	
+	![ДЗ №8 L1](images/12-protocols-vs-ngfw-04.png)
+</details>
+
 <details>
 	<summary>msk-l-001#sh bgp evpn route-type mac-ip</summary>
 
 ```bash
-msk-l-001#sh bgp evpn route-type mac-ip
-BGP routing table information for VRF default
-Router identifier 10.1.1.1, local AS number 65101
-Route status codes: s - suppressed, * - valid, > - active, E - ECMP head, e - EC                                                                                                                                                             MP
-                    S - Stale, c - Contributing to ECMP, b - backup
-                    % - Pending BGP convergence
-Origin codes: i - IGP, e - EGP, ? - incomplete
-AS Path Attributes: Or-ID - Originator ID, C-LST - Cluster List, LL Nexthop - Li                                                                                                                                                             nk Local Nexthop
-
-          Network                Next Hop              Metric  LocPref Weight  P                                                                                                                                                             ath
- * >     RD: 10.1.1.1:200 mac-ip 501d.2500.1100
-                                 -                     -       -       0       i
- * >     RD: 10.1.1.1:200 mac-ip 501d.2500.1100 10.4.20.10
-                                 -                     -       -       0       i
- * >     RD: 10.1.1.1:100 mac-ip 507d.4200.1300
-                                 -                     -       -       0       i
- * >Ec   RD: 10.1.1.2:100 mac-ip 507d.4200.1301
-                                 10.1.1.2              -       100     0       6                                                                                                                                                             5001 65102 i
- *  ec   RD: 10.1.1.2:100 mac-ip 507d.4200.1301
-                                 10.1.1.2              -       100     0       6                                                                                                                                                             5001 65102 i
- * >Ec   RD: 10.1.1.3:100 mac-ip 507d.4200.1302
-                                 10.1.1.3              -       100     0       6                                                                                                                                                             5001 65103 i
- *  ec   RD: 10.1.1.3:100 mac-ip 507d.4200.1302
-                                 10.1.1.3              -       100     0       6                                                                                                                                                             5001 65103 i
- * >Ec   RD: 10.1.1.4:100 mac-ip 507d.4200.1303
-                                 10.1.1.4              -       100     0       6                                                                                                                                                             5001 65104 i
- *  ec   RD: 10.1.1.4:100 mac-ip 507d.4200.1303
-                                 10.1.1.4              -       100     0       6                                                                                                                                                             5001 65104 i
- * >Ec   RD: 10.1.1.253:400 mac-ip 50a9.2b00.1a00
-                                 10.1.1.253            -       100     0       6                                                                                                                                                             5001 65353 i
- *  ec   RD: 10.1.1.253:400 mac-ip 50a9.2b00.1a00
-                                 10.1.1.253            -       100     0       6                                                                                                                                                             5001 65353 i
- * >Ec   RD: 10.1.1.254:400 mac-ip 50a9.2b00.1a00
-                                 10.1.1.254            -       100     0       6                                                                                                                                                             5001 65354 i
- *  ec   RD: 10.1.1.254:400 mac-ip 50a9.2b00.1a00
-                                 10.1.1.254            -       100     0       6                                                                                                                                                             5001 65354 i
- * >Ec   RD: 10.1.1.253:400 mac-ip 50a9.2b00.1a00 10.4.40.10
-                                 10.1.1.253            -       100     0       6                                                                                                                                                             5001 65353 i
- *  ec   RD: 10.1.1.253:400 mac-ip 50a9.2b00.1a00 10.4.40.10
-                                 10.1.1.253            -       100     0       6                                                                                                                                                             5001 65353 i
- * >Ec   RD: 10.1.1.254:400 mac-ip 50a9.2b00.1a00 10.4.40.10
-                                 10.1.1.254            -       100     0       6                                                                                                                                                             5001 65354 i
- *  ec   RD: 10.1.1.254:400 mac-ip 50a9.2b00.1a00 10.4.40.10
-                                 10.1.1.254            -       100     0       6                                                                                                                                                             5001 65354 i
- * >Ec   RD: 10.1.1.254:300 mac-ip 50ee.2f51.c647
-                                 10.1.1.254            -       100     0       6                                                                                                                                                             5001 65354 i
- *  ec   RD: 10.1.1.254:300 mac-ip 50ee.2f51.c647
-                                 10.1.1.254            -       100     0       6                                                                                                                                                             5001 65354 i
- * >Ec   RD: 10.1.1.253:300 mac-ip 50ee.2f51.c647 10.4.32.10
-                                 10.1.1.253            -       100     0       6                                                                                                                                                             5001 65353 i
- *  ec   RD: 10.1.1.253:300 mac-ip 50ee.2f51.c647 10.4.32.10
-                                 10.1.1.253            -       100     0       6                                                                                                                                                             5001 65353 i
- * >Ec   RD: 10.1.1.254:300 mac-ip 50ee.2f51.c647 10.4.32.10
-                                 10.1.1.254            -       100     0       6                                                                                                                                                             5001 65354 i
- *  ec   RD: 10.1.1.254:300 mac-ip 50ee.2f51.c647 10.4.32.10
-                                 10.1.1.254            -       100     0       6                                                                                                                                                             5001 65354 i
- * >     RD: 10.1.1.1:100 mac-ip 5674.cea1.1231
-                                 -                     -       -       0       i
- * >Ec   RD: 10.1.1.2:100 mac-ip 5674.cea1.1231
-                                 10.1.1.2              -       100     0       6                                                                                                                                                             5001 65102 i
- *  ec   RD: 10.1.1.2:100 mac-ip 5674.cea1.1231
-                                 10.1.1.2              -       100     0       6                                                                                                                                                             5001 65102 i
- * >     RD: 10.1.1.1:100 mac-ip 5674.cea1.1231 10.4.10.10
-                                 -                     -       -       0       i
- * >Ec   RD: 10.1.1.2:100 mac-ip 5674.cea1.1231 10.4.10.10
-                                 10.1.1.2              -       100     0       6                                                                                                                                                             5001 65102 i
- *  ec   RD: 10.1.1.2:100 mac-ip 5674.cea1.1231 10.4.10.10
-                                 10.1.1.2              -       100     0       6                                                                                                                                                             5001 65102 i
- * >Ec   RD: 10.1.1.3:100 mac-ip 5674.cea1.1231 10.4.10.10
-                                 10.1.1.3              -       100     0       6                                                                                                                                                             5001 65103 i
- *  ec   RD: 10.1.1.3:100 mac-ip 5674.cea1.1231 10.4.10.10
-                                 10.1.1.3              -       100     0       6                                                                                                                                                             5001 65103 i
- * >Ec   RD: 10.1.1.4:100 mac-ip 5674.cea1.1231 10.4.10.10
-                                 10.1.1.4              -       100     0       6                                                                                                                                                             5001 65104 i
- *  ec   RD: 10.1.1.4:100 mac-ip 5674.cea1.1231 10.4.10.10
-                                 10.1.1.4              -       100     0       6                                                                                                                                                             5001 65104 i
-msk-l-001#\
-% Invalid input
-msk-l-001#
-msk-l-001#
-msk-l-001#
-msk-l-001#
-msk-l-001#
-msk-l-001#
-msk-l-001#
-msk-l-001#
-msk-l-001#
-msk-l-001#
-msk-l-001#
-msk-l-001#
-msk-l-001#
-msk-l-001#
-msk-l-001#
-msk-l-001#
-msk-l-001#
-msk-l-001#
-msk-l-001#
-msk-l-001#
-msk-l-001#
 msk-l-001#sh bgp evpn route-type mac-ip
 BGP routing table information for VRF default
 Router identifier 10.1.1.1, local AS number 65101
