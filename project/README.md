@@ -1,82 +1,75 @@
 [Назад, к списку домашних заданий](../README.md)
 ## 1. План работ.  
-1. Разработать и сдать...  
+1. Спроектировать схему сети с учетом вводных данных.
+2. Сконфигурировать CLOS в COD Moscow.
+3. Сконфигурировать CLOS в COD Taganrog.
+4. Настроить связность между двумя цод с использованием NGFW Континент 4.  
+5. Протестировать связность.
+6. Протестировать отказоустойчивость.
+7. Зафиксировать конфигурации сетевого оборудования.
 
 ## 2. Схема топологии CLOS.  
 ![ДЗ №8 L1](images/schema-l1.png)
 
 ## 3. Адресное пространство  
 <details>
-  <summary>Underlay для COD Moscow</summary>
+  <summary>Адресное пространство COD Moscow</summary>
 
-### Таблица 1. Адресное пространство.  
+### Таблица 1. Адресное пространство COD Moscow.  
 |Адресация|Назначение|
 |--------|--------|
 |10.0.1.**\<SN\>**/32|loopback интерфейсы для spine, где SN = 1-255|
 |10.1.1.**\<LN\>**/32|loopback интерфейсы для leaf, где LN = 1-255|
-|10.2.**\<SN\>**.**\<N\>**/31|p2p линки между spine и leaf, где SN = номер spine, N = 0-255|
-|10.4.10.0/24|Overlay - vlan 100, vrf srv-10, gw 10.4.10.1|
-|10.4.20.0/24|Overlay - vlan 200, vrf srv-20, gw 10.4.20.1|
-|10.100.0.0/16|Внешние сети, firewall|
+|10.2.**\<SN\>**.**\<N\>**/31|p2p линки между spine и leaf 1-128, где SN = номер spine, N = 0-255|
+|10.3.**\<SN\>.**\<N\>**/31|p2p линки между spine и leaf 129-254, где SN = номер spine, N = 0-255|
+|10.4.10.0/24|overlay infra - vlan 100, vrf infra, gw 10.4.10.1|
+|10.4.11.0/24|ic-infra - vlan 101, vrf infra|
+|10.4.20.0/24|overlay sec - vlan 200, vrf sec, gw 10.4.20.1|
+|10.4.21.0/24|ic-sec - vlan 200, vrf sec|
+|10.4.30.0/24|overlay mgmt - loopback2, vrf mgmt|
+|10.4.31.0/24|ic-mgmt - vlan 301, vrf mgmt|
+|10.4.32.0/24|overlay mgmt other - vlan 302, vrf mgmt, gw 10.4.32.1|
+|10.4.40.0/24|overlay adm - vlan 400, vrf , gw 10.4.40.1|
+|10.4.41.0/24|ic-adm - vlan 400, vrf|
 </details>
 
 <details>
-  <summary>Underlay для COD Taganrog</summary>
+  <summary>Адресное пространство COD Taganrog</summary>
 
-### Таблица 2. Адресное пространство.  
+### Таблица 2. Адресное пространство COD Taganrog.  
 |Адресация|Назначение|
 |--------|--------|
-|10.0.1.**\<SN\>**/32|loopback интерфейсы для spine, где SN = 1-255|
-|10.1.1.**\<LN\>**/32|loopback интерфейсы для leaf, где LN = 1-255|
-|10.2.**\<SN\>**.**\<N\>**/31|p2p линки между spine и leaf, где SN = номер spine, N = 0-255|
-|10.4.10.0/24|Overlay - vlan 100, vrf srv-10, gw 10.4.10.1|
-|10.4.20.0/24|Overlay - vlan 200, vrf srv-20, gw 10.4.20.1|
-|10.100.0.0/16|Внешние сети, firewall|
+|10.6.3.**\<SN\>**/32|loopback интерфейсы для spine, где SN = 1-255|
+|10.6.4.**\<LN\>**/32|loopback интерфейсы для leaf, где LN = 1-255|
+|10.6.1.**\<N\>**/31|p2p линки между spine и leaf, N = 0-255|
+|10.5.10.0/24|overlay infra - vlan 100, vrf infra, gw 10.4.10.1|
+|10.5.11.0/24|ic-infra - vlan 101, vrf infra|
+|10.5.30.0/24|overlay mgmt - loopback2, vrf mgmt|
+|10.5.31.0/24|ic-mgmt - vlan 301, vrf mgmt|
 </details>
 
 <details>
-  <summary>Overlay для COD Moscow</summary>
+  <summary>Перечень NGFW</summary>
 
-### Таблица 3. Адресное пространство.  
-|Адресация|Назначение|
-|--------|--------|
-|10.0.1.**\<SN\>**/32|loopback интерфейсы для spine, где SN = 1-255|
-|10.1.1.**\<LN\>**/32|loopback интерфейсы для leaf, где LN = 1-255|
-|10.2.**\<SN\>**.**\<N\>**/31|p2p линки между spine и leaf, где SN = номер spine, N = 0-255|
-|10.4.10.0/24|Overlay - vlan 100, vrf srv-10, gw 10.4.10.1|
-|10.4.20.0/24|Overlay - vlan 200, vrf srv-20, gw 10.4.20.1|
-|10.100.0.0/16|Внешние сети, firewall|
+### Таблица 3. Перечень NGFW.
+
+![ДЗ №8 L1](images/2-all-ngfw.png)
+
 </details>
 
 <details>
-  <summary>Overlay для COD Taganrog</summary>
+  <summary>Интерфейсы кластера NGFW c-ngfw-01 в COD Moscow. </summary>
   
-### Таблица 4. Адресное пространство.  
-|Адресация|Назначение|
-|--------|--------|
-|10.0.1.**\<SN\>**/32|loopback интерфейсы для spine, где SN = 1-255|
-|10.1.1.**\<LN\>**/32|loopback интерфейсы для leaf, где LN = 1-255|
-|10.2.**\<SN\>**.**\<N\>**/31|p2p линки между spine и leaf, где SN = номер spine, N = 0-255|
-|10.4.10.0/24|Overlay - vlan 100, vrf srv-10, gw 10.4.10.1|
-|10.4.20.0/24|Overlay - vlan 200, vrf srv-20, gw 10.4.20.1|
-|10.100.0.0/16|Внешние сети, firewall|
+### Таблица 4. Интерфейсы кластера NGFW c-ngfw-01 в COD Moscow.  
+![ДЗ №8 L1](images/3-cl-ngfw-01-interfaces.png)
+</details>
 </details>
 
 <details>
-  <summary>Таблица 5. Номера автономных систем (AS).</summary>
-
-
-
-### Таблица 5. Номера автономных систем (AS).  
-|Имя коммутатора|AS|комментарий|
-|--------|--------|--------|
-|spine1|65001||
-|spine2|65001||
-|fw|65100||
-|leaf1|65101||
-|leaf2|65102||
-|leaf3|65103||
-|leafN|65XXX|**\<где XXX = 100 + N\>**|
+  <summary>Интерфейсы NGFW vs-ngfw-04 в COD Taganrog. </summary>
+  
+### Таблица 4. Интерфейсы NGFW vs-ngfw-04 в COD Taganrog.  
+![ДЗ №8 L1](images/4-vs-ngfw-04-interfaces.png)
 </details>
 
 ## 4. Настройки сетевого оборудования ЦОД Moscow
