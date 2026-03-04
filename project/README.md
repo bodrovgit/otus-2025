@@ -69,7 +69,7 @@
   <summary>Интерфейсы NGFW vs-ngfw-04 в COD Taganrog. </summary>
   
 ### Таблица 4. Интерфейсы NGFW vs-ngfw-04 в COD Taganrog.  
-![ДЗ №8 L1](images/4-vs-ngfw-04-interfaces.png)
+![ДЗ №8 L1](images/4-ngfw-04-interfaces.png)
 </details>
 
 ## 4. Настройки сетевого оборудования ЦОД Moscow
