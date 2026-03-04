@@ -53,7 +53,7 @@
 
 ### Таблица 3. Перечень NGFW.
 
-![ДЗ №8 L1](images/2-all-ngfw.png)
+![ДЗ №8 L1](images/2-ngfw-all.png)
 
 </details>
 
